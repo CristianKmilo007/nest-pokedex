@@ -5,14 +5,17 @@
 # Ejecutar en desarrolo
 
 1. Clonar el repositorio
+
 2. Ejecutar
 ```
 npm i
 ```
+
 3. Tener Nest CLI instalado
 ```
 npm i -g @nestjs/cli
 ```
+
 4. Levantar la base de datos
 ```
 docker-compose up -d
@@ -35,3 +38,17 @@ http://localhost:3000/api/v2/seed
 ## Stack usado
 * MongoDB
 * Nest
+
+# Produccion Build
+
+1. Crear el archivo ```.env.prod```
+
+2. Llenar las variables de entorno de prod
+
+3. Crear la nueva imagen
+```
+docker-compose -f docker-compose.prod.yaml --env-file .env.prod up --build
+```
+
+# Notas
+Deploy en Railway
