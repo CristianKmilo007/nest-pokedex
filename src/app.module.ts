@@ -21,7 +21,9 @@ import { JoiValidationSchema } from './config/joi.validation';
       rootPath: join(__dirname, '..', 'public'),
     }),
 
-    MongooseModule.forRoot(process.env.MONGO_DB as string),
+    MongooseModule.forRoot(process.env.MONGO_DB as string, {
+      dbName: 'pokemosDB'
+    }),
 
     PokemonModule,
 
