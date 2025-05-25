@@ -1,5 +1,5 @@
 ## Etapa de dependencias
-FROM node:22.15.0-alpine AS deps
+FROM node:22-alpine AS deps
 
 # En Alpine puede ser necesario libc6-compat para ciertas dependencias nativas
 RUN apk add --no-cache libc6-compat
@@ -11,7 +11,7 @@ COPY package.json package-lock.json ./
 RUN npm ci
 
 ## Etapa de build
-FROM node:22.15.0-alpine AS builder
+FROM node:22-alpine AS builder
 WORKDIR /app
 
 # Traemos node_modules desde deps
@@ -22,7 +22,7 @@ COPY . .
 RUN npm run build
 
 ## Etapa de producción
-FROM node:22.15.0-alpine AS runner
+FROM node:22-alpine AS runner
 WORKDIR /usr/src/app
 
 # Copiamos archivos para instalar solo producción
